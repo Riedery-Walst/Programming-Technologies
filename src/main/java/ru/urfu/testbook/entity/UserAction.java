@@ -1,30 +1,31 @@
 package ru.urfu.testbook.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users_actions")
 public class UserAction {
     @Id
-    @Temporal(TemporalType.TIMESTAMP)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "description")
+    private String description;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(name = "date_actions")
+    private Date dateActions;
 
-    @Column(nullable = false)
-    private String ActionType;
 
-    @Column(nullable = false)
-    private LocalDateTime ActionTime;
 }
