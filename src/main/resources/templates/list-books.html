@@ -27,20 +27,21 @@ navigation">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
         </li>
+      </ul>
     </div>
   </div>
 </nav>
 <div class="container">
   <hr/>
-  <a th:href="@{/addbookForm}" class="btn btn-primary">Add book</a>
+  <a th:href="@{/addBookForm}" class="btn btn-primary">Add Book</a>
   <br/><br/>
   <table class="table table-bordered table-striped" id="bookTable">
     <thead>
     <tr>
       <th>Name</th>
-      <th>author</th>
-      <th>publisher</th>
-      <th>publishDate</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>Publish Date</th>
     </tr>
     </thead>
     <tbody>
@@ -51,7 +52,7 @@ navigation">
       <td th:text="${book.publishDate}" />
       <td>
         <a th:href="@{/showUpdateForm(bookId=${book.id})}" class="btn btninfo">Update</a>
-        <a th:href="@{/deletebook(bookId=${book.id})}" class="btn btn-danger ml2">Delete</a>
+        <a th:href="@{/deleteBook(bookId=${book.id})}" class="btn btn-danger ml2">Delete</a>
       </td>
     </tr>
     </tbody>
@@ -61,7 +62,7 @@ navigation">
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt1.10.25/datatables.min.js"></script>
 <script>
   $(document).ready(function() {
-    $("#bookTable").DataTable({
+    $("#BookTable").DataTable({
       'aoColumnDefs': [{
         'bSortable': false,
         'aTargets': [-1] /* 1st one, start by the right */
